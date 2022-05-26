@@ -16,10 +16,18 @@ func main() {
 	}
 
 	u, p := args[1], args[2]
-	if u != "jack" {
-		fmt.Printf("Access denied for %q.\n", u)
-	} else if p != "8888" {
-		fmt.Printf("Invalid password for %q.\n", u)
+
+	errUser := "Access denied for %q.\n"
+
+	user, user2 := "jack", "inanc"
+	pass, pass2 := "8888", "9999"
+
+	if u != user && u != user2 {
+		fmt.Printf(errUser, u)
+	} else if u == user && p != pass {
+		fmt.Printf("Invalid password for %q.\n", user)
+	} else if u == user2 && p != pass2 {
+		fmt.Printf("Invalid password for %q.\n", user2)
 	} else {
 		fmt.Printf("Access granted for %q.\n", u)
 	}

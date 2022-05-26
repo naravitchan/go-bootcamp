@@ -12,11 +12,15 @@ func main() {
 	args := os.Args
 	if len(args) != 3 {
 		fmt.Println("Usage: [username] [password]")
-	} else if args[1] != "jack" {
-		fmt.Printf("Access denied for \"%v\".\n", args[1])
-	} else if args[2] != "8888" {
-		fmt.Printf("Invalid password for \"%v\".\n", args[1])
+		return
+	}
+
+	u, p := args[1], args[2]
+	if u != "jack" {
+		fmt.Printf("Access denied for %q.\n", u)
+	} else if p != "8888" {
+		fmt.Printf("Invalid password for %q.\n", u)
 	} else {
-		fmt.Printf("Access granted for \"%v\".\n", args[1])
+		fmt.Printf("Access granted for %q.\n", u)
 	}
 }

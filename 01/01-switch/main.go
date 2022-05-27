@@ -9,7 +9,7 @@ func main() {
 	city := os.Args[1]
 
 	switch city {
-	case "Paris":
+	case "Paris", "Lyon":
 		fmt.Println("France")
 
 		vip := true
@@ -18,5 +18,7 @@ func main() {
 	case "Tokyo":
 		fmt.Println("Japan")
 		// fmt.Println("VIP trip?", vip)
+	default:
+		fmt.Println("Where?")
 	}
 }

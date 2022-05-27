@@ -6,7 +6,6 @@ import (
 )
 
 func main() {
-
 	// user = jack
 	// pass: 1888
 	args := os.Args

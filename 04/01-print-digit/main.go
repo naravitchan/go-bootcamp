@@ -92,31 +92,17 @@ func main() {
 		zero, one, two, three, four, five, six, seven, eight, nine,
 	}
 
+	if len(os.Args) < 2 {
+		fmt.Println("go run main.go [0-9]...[0-9]")
+		return
+	}
+
 	// i, _ := strconv.Atoi(os.Args[1])
 	for index, _ := range digits[0] {
 		for _, v := range os.Args[1:] {
 			g, _ := strconv.Atoi(v)
 			fmt.Printf("%q  ", digits[g][index])
 		}
-		// // for _, v := range digits[i]
-		// for
 		fmt.Printf("\n")
 	}
-	// var books [4]string
-
-	// fmt.Printf("books  : %q\n", books)
-	// fmt.Printf("books  : %#v\n", books)
-
-	// var books [1 + 3]string
-	// var books [yearly]string
-
-	// books[0] = "Kafka"
-	// books[1] = "Stay G"
-	// books[2] = "Everything"
-	// books[3] += books[0] + " 2nd"
-
-	// fmt.Printf("books  : %T\n", books)
-	// fmt.Println("books  :", books)
-	// fmt.Printf("books  : %q\n", books)
-	// fmt.Printf("books  : %#v\n", books)
 }

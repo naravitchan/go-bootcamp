@@ -3,8 +3,6 @@ package main
 import (
 	"fmt"
 	"time"
-
-	"github.com/inancgumus/screen"
 )
 
 func main() {
@@ -96,47 +94,27 @@ func main() {
 		" ",
 	}
 
-	separator_even := show_num{
-		" ",
-		" ",
-		" ",
-		" ",
-		" ",
-	}
-
 	// for range [:5]
 	digits := [...]show_num{
-		zero, one, two, three, four, five, six, seven, eight, nine, separator, separator_even,
+		zero, one, two, three, four, five, six, seven, eight, nine, separator,
 	}
 
 	// if len(os.Args) < 2 {
 	// 	fmt.Println("go run main.go [0-9]...[0-9]")
 	// 	return
 	// }
-	screen.Clear()
-	for {
-		screen.MoveTopLeft()
-		now := time.Now()
-		hour, min, sec := now.Hour(), now.Minute(), now.Second()
-		fmt.Printf("hour: %d, min: %d, sec: %d\n", hour, min, sec)
 
-		sep := 10
-		if sec%2 == 0 {
-			sep = 11
+	now := time.Now()
+	hour, min, sec := now.Hour(), now.Minute(), now.Second()
+	fmt.Printf("hour: %d, min: %d, sec: %d\n", hour, min, sec)
+
+	clock := [...]int{hour / 10, hour % 10, 10, min / 10, min % 10, 10, sec / 10, sec % 10}
+	// i, _ := strconv.Atoi(os.Args[1])
+	for index := range digits[0] {
+		for _, v := range clock {
+			// g, _ := strconv.Atoi(v)
+			fmt.Print(digits[v][index], "  ")
 		}
-
-		clock := [...]int{hour / 10, hour % 10, sep, min / 10, min % 10, sep, sec / 10, sec % 10}
-		// i, _ := strconv.Atoi(os.Args[1])
-		for index := range digits[0] {
-			for _, digit := range clock {
-				// also can if v = separator and % 2 ==0 then print "  "
-
-				fmt.Print(digits[digit][index], "  ")
-			}
-			fmt.Printf("\n")
-		}
-		time.Sleep(time.Second)
-		// screen.Clear()
-		// go get -u github.com/inancgumus/screen
+		fmt.Printf("\n")
 	}
 }

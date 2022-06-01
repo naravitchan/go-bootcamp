@@ -16,7 +16,7 @@ func main() {
 
 	var uniques []int
 loop:
-	for found := 0; found < max; {
+	for len(uniques) < max {
 		n := rand.Intn(max) + 1
 		fmt.Print(n, " ")
 
@@ -28,7 +28,6 @@ loop:
 
 		// uniques[found] = n // error
 		uniques = append(uniques, n)
-		found++
 	}
 
 	fmt.Println("\n\nuniques:", uniques)

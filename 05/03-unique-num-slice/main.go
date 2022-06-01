@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"math/rand"
 	"os"
+	"sort"
 	"strconv"
 	"time"
 )
@@ -32,4 +33,10 @@ loop:
 
 	fmt.Println("\n\nuniques:", uniques)
 
+	sort.Ints(uniques)
+	fmt.Println("\n\nsorted:", uniques)
+
+	num := [5]int{5, 4, 3, 2, 1}
+	sort.Ints(num[:])
+	fmt.Println("\n\nsorted Arr:", num)
 }

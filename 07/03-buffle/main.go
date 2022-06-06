@@ -15,7 +15,10 @@ func main() {
 		cellEmpty = ' '
 		h         = 10
 		column    = 50
+		speed     = time.Second / 20
 	)
+	x_v := 1
+	y_v := 1
 	var cell rune
 	board := make([][]bool, h)
 
@@ -36,8 +39,6 @@ func main() {
 	x_ball := 0
 	y_ball := 0
 	board[y_ball][x_ball] = true
-	x_v := 1
-	y_v := 1
 	screen.Clear()
 	for {
 		screen.Clear()
@@ -76,6 +77,6 @@ func main() {
 		// cal & update
 
 		board[y_ball][x_ball] = true
-		time.Sleep(time.Second / 3)
+		time.Sleep(speed)
 	}
 }

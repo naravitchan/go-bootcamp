@@ -27,10 +27,13 @@ func main() {
 		return
 	}
 
+	var names []byte
 	for _, file := range files {
 		if file.Size() == 0 {
 			name := file.Name()
-			fmt.Println(name)
+			names = append(names, name...)
+			names = append(names, '\n')
 		}
 	}
+	fmt.Printf("%s", names)
 }

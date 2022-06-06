@@ -11,7 +11,7 @@ func main() {
 	// h := 10
 	// row := 50
 	h := 10
-	column := 50
+	column := 20
 	board := make([][]bool, h)
 
 	for i := range board {
@@ -29,11 +29,14 @@ func main() {
 		for _, v := range board {
 			for _, v := range v {
 				if v {
-					fmt.Print("O")
-					fmt.Print(" ")
+					fmt.Print("  ")
+					fmt.Print("⚽")
+					fmt.Print("  ")
+					// fmt.Print(" ")
 				} else {
+					fmt.Print("  ")
 					fmt.Print("X")
-					fmt.Print(" ")
+					fmt.Print("   ")
 				}
 			}
 			fmt.Println()

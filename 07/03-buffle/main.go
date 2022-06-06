@@ -12,10 +12,11 @@ func main() {
 	// row := 50
 	const (
 		cellBall  = '⚽'
-		cellEmpty = ' '
+		cellEmpty = 'x'
 		h         = 10
 		column    = 50
 		speed     = time.Second / 20
+		bufLen    = (column*2 + 1) * h
 	)
 	x_v := 1
 	y_v := 1
@@ -26,7 +27,7 @@ func main() {
 		board[i] = make([]bool, column)
 	}
 
-	buf := make([]rune, 0, column*h)
+	buf := make([]rune, 0, bufLen)
 	// board[2][12] = true
 	// board[2][16] = true
 	// board[4][14] = true

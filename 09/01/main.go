@@ -23,46 +23,49 @@ import (
 	"os"
 )
 
+const (
+	link  = "http://"
+	nlink = len(link)
+	mask  = '*'
+)
+
 func main() {
 	args := os.Args[1:]
 	if len(args) != 1 {
 		fmt.Println("gimme somethin' to mask!")
 		return
 	}
-
-	const (
-		link  = "http://"
-		nlink = len(link)
-	)
-
 	var (
 		text = args[0]
 		size = len(text)
-		// buf  = make([]byte, 0, size)
-		buf = []byte(text)[:0]
-		a   bool
-	)
 
+		// create a byte buffer directly from the string (text)
+		buf = []byte(text)
+
+		is_mask bool
+	)
+	// buf = buf[:0]
+
+	fmt.Println(string(buf))
 	for i := 0; i < size; i++ {
 
 		// slice the input and look for the link pattern
 		// do not slice it when it goes beyond the input text's capacity
 		if len(text[i:]) >= nlink && text[i:i+nlink] == link {
-			a = true
+			is_mask = true
 			// b := []byte("*")
-			buf = append(buf, link...)
+			// buf = append(buf, link...)
 			i += nlink
 		}
-		c := text[i]
 
-		switch c {
+		switch text[i] {
 		case ' ', '\t', '\n':
-			a = false
+			is_mask = false
 		}
-		if a {
-			c = '*'
+		if is_mask {
+			buf[i] = mask
 		}
-		buf = append(buf, c)
+		// buf = append(buf, c)
 		// fmt.Println(string(buf))
 	}
 
